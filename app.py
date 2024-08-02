@@ -10,7 +10,7 @@ if 'model' not in st.session_state:
     model = pickle.load(open('Bike_Sharing_Log_Model.sav', 'rb'))
     st.session_state['model'] = model
 
-st.header('Masukkan kondisi cuaca')
+st.header('Masukkan tanggal dan kondisi cuaca')
 dteday = st.date_input('Masukkan tanggal (YYYY-MM-DD)', value = None)
 hum = st.number_input('Masukkan tingkat kelembapan (0 sampai 1)', min_value = 0.0, max_value = 1.0)
 weathersit = st.radio('Masukkan kondisi cuaca; 1: sangat bagus, 2: berkabut, 3: hujan / salju', [1,2,3])
@@ -19,11 +19,11 @@ atemp = st.number_input('Masukkan suhu yang dirasakan (mohon normalisasi dulu me
 hr = st.radio('Masukkan jam berapa data diambil (0-23)', list(range(0,24)))
 
 dteday_datetime = dteday
-year = dteday_datetime.dt.year
-month = dteday_datetime.dt.month
-day = dteday_datetime.dt.day
+year = dteday_datetime.year
+month = dteday_datetime.month
+day = dteday_datetime.day
 day = str(day)
-day_week = dteday_datetime.dt.day_of_week.dtype=('object')
+day_week = dteday_datetime.weekday()
 day_week = str(day_week)
 
 hr_bin_ord = []
