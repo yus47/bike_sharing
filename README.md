@@ -1,5 +1,7 @@
 # Predicting the Number of Bicycle That Was Currently Rented by Customers in Metro D.C.
 
+Note: *Update with the addition of bike-sharing.ipynb, day.csv for the dataset, and .json model using Prophet*.
+
 Disclaimer: *This project is a capstone project as a requirement for Data Science bootcamp held by Purwadhika Digital Technology School. Datasets used may or may not changed to ensure that the notebook and the model is not a plagiarized documentation. The notebook provided in this git is also in Indonesian, please contact me if you need an English translation of the Jupyter notebook. Other than general regression model, I also enclose a time-series regression model (not pickled yet) in the notebook, please kindly check if you want to.*
 
 This project involves building a regression model to predict the number of bikes rented per hour from the Capital Bike Share system in Washington, D.C.
@@ -30,11 +32,13 @@ The dataset used in this project is provided by Capital Bikeshare, that includes
 The dataset can be accessed from [Kaggle](https://www.kaggle.com/datasets/marklvl/bike-sharing-dataset) (I also enclosed the link in the Jupyter notebook).
 
 ## Model
-Please kindly note that the app.py file is still not complete. I plan to update the app.py and any necessary file after this project is graded by Purwadhika Digital Technology School.
-The model used in this project is eXtreme Gradient Booster, which is an ensemble method that iterate the process of decision trees using gradient descent optimization.
+~~Please kindly note that the app.py file is still not complete. I plan to update the app.py and any necessary file after this project is graded by Purwadhika Digital Technology School.
+The model used in this project is eXtreme Gradient Booster, which is an ensemble method that iterate the process of decision trees using gradient descent optimization.~~
+For forecasting model, please use the `serialized_model.json`.
 
 ### Feature Selection and Engineering
-This model uses feature of 'day' (binary-encoded), 'day of the week' (one-hot encoded), 'time' (binned, ordinal-encoded, and scaled), 'season' (one-hot encoded), 'humidity', and 'feeler temperature' (normalized). The target in this model though is 'count' of bike currently rented, however due to heavily right-skewed properties of the target, the model was transformed using a logarithmic function, so until further notice **please use an exponential function to interpret the prediction value if it returns a single-digit value**!
+~~This model uses feature of 'day' (binary-encoded), 'day of the week' (one-hot encoded), 'time' (binned, ordinal-encoded, and scaled), 'season' (one-hot encoded), 'humidity', and 'feeler temperature' (normalized). The target in this model though is 'count' of bike currently rented, however due to heavily right-skewed properties of the target, the model was transformed using a logarithmic function, so until further notice **please use an exponential function to interpret the prediction value if it returns a single-digit value**!~~
+The features used were `weathersit` (encoded with OneHot), `hum` (imputted with KNN), any date variables, `temp`, and `windspeed`, with the target of the forecast used was `cnt` (later renamed as `y` to be used in fbprophet).
 
 ### Evaluation Metrics and Results
 This model performance is evaluated using following metrics:
